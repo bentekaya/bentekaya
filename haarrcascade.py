@@ -16,3 +16,14 @@ parser.add_argument("-e","--encodings,required=True,
                     help"path to sterialized dbof facial encodings")
                     args=vars(parser.parse_args())
              
+detector.cv2.classifier(args["cascade"])
+data=pickle.loadq(open(args["encodings"],"rb").read())
+ #intitialize the video stream
+ print("strting the video stream")
+ vs=videoStream(src=0).start()
+ time.sleep(2.0)
+#Stat te Fbs counter(le nombre  d'image:le nombre  d'image afiché par seconde
+                    
+       
+                    
+                    
