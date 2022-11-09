@@ -18,11 +18,40 @@ parser.add_argument("-e","--encodings,required=True,
              
 detector.cv2.classifier(args["cascade"])
 data=pickle.load(open(args["encodings"],"rb").read())
- #intitialize the video stream
- print("strting the video stream")
- vs=videoStream(src=0).start()
- time.sleep(2.0)
-#Stat te Fbs counter(le nombre  d'image:le nombre  d'image afiché par seconde
+#intitialize the video stream
+print("strting the video stream")
+vs=videoStream(src=0).start()
+time.sleep(2.0)
+#Start the Fbs counter(:le nombre  d'image afiché par seconde)
+fps=FPS().start()
+#loop over frames from the video file stream
+while True:
+#resize the frame from video
+                    
+   frame=vs.read()
+    #to 500 px
+   frame=imutils.resize(frame,width=500)
+   #convert the input frame BGR from grayscale for face detection
+   # from BGR to RGB (for face recognition)
+   gray=cv2.cvtcolor(frame,cv2.COLOR_ BGR2GRAY)    
+   gray=cv2.cvtcolor(frame,cv2.COLOR_ BGR2RGB)     
+   #detect faces in the gray scale frame
+   rects=detector.detectMultiscale(gray,scaleFactor=1.1,minsize=(30,30))
+   boxes=[(y,x+w,y+w,x)for(x,y,w;h)in rects]
+   #compute the facial recognition for each facebounding box
+   encodings=face_recognition.face_encodings(rgb,boxes)
+   names=[]
+   #loop over the facial
+   for encoding in encodings:
+     face=face_recognition.compare(data["encodings"],encoding)
+     name="Unknown"              
+                    
+                    
+    
+    
+  
+                    
+                    
                     
        
                     
