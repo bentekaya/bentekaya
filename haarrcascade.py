@@ -43,8 +43,27 @@ while True:
    names=[]
    #loop over the facial
    for encoding in encodings:
-     face=face_recognition.compare(data["encodings"],encoding)
-     name="Unknown"              
+     trueface=face_recognition.compare(data["encodings"],encoding)
+     name="Unknown"  
+     #check if we have a match
+      if true in truefaces:
+      #find the indexes of all matches
+      matched=[i for (i,b)in enumerate (matches) if b]
+      counts={}
+      for i in matched:
+          name=data["names"][i]
+          counts[name]=counts.get(name,0)+1
+           #determine the recognized face with a largest number of votes
+           name=max(counts,key=counts.get)
+      names.append(name)
+      if name=="unknown":
+            firebase.put('mqtt-raspberry','light',unknown)
+      else:
+         firebase.put('mqtt-raspberry','light',names)    
+      #loop over the recognized face
+   for                  
+                    
+                    
                     
                     
     
