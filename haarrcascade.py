@@ -74,7 +74,16 @@ while True:
 		leftEyeHull = cv2.convexHull(leftEye)
 		rightEyeHull = cv2.convexHull(rightEye)
 		cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
-		cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1)   
+		cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1) 
+		if ear < EYE_AR_THRESH:
+			nb:nb+1
+		    if nb >= EYE_AR_CONSEC_FRAMES:
+		      cv2.putText(frame, "DROWSINESS ALERT!", (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+		     else:
+			nb = 0
+		        cv2.putText(frame, "EAR: {:.3f}".format(ear), (300, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+ 
+		    
    boxes=[(y,x+w,y+w,x)for(x,y,w;h)in rects]
    #compute the facial recognition for each facebounding box
    encodings=face_recognition.face_encodings(rgb,boxes)
