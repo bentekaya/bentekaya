@@ -1,3 +1,11 @@
+import json
+import time
+from elasticsearch import Elasticsearch ,exceptions # ...   
+from elasticsearch_repo import *   
+from flask import Flask, jsonify, request,make_response, abort
+
+from flask_cors import CORS,cross_origin
+
 # Matching profiles by jobs
 @app.route('/api/v1/jobs/matching/<jobs_id>', methods=['POST'])
 def getoffreprofil(jobs_id):  
