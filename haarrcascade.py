@@ -17,7 +17,7 @@ parser.add_argument("-e","--encodings,required=True,
                     args=vars(parser.parse_args())
              
 detector.cv2.classifier(args["cascade"])
-data=pickle.loadq(open(args["encodings"],"rb").read())
+data=pickle.load(open(args["encodings"],"rb").read())
  #intitialize the video stream
  print("strting the video stream")
  vs=videoStream(src=0).start()
