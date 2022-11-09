@@ -1,22 +1,35 @@
 from imutils.video import videoStream
 from imutils.video import FPS
+from imutils import face_utils
 import face_recognition
 import argparse
 import imutils
 import pickle
 import time
 import CV2
+import dlib
+import numpy as np
 from firebase import firebase
 firebase=firebase.FirebaseApplication('https://mqtt-raspberry.firebase.com/')
+EYE_AR_THRESH = 0.3
+EYE_AR_CONSEC_FRAMES = 16
+nb= 0
 
 parse=argparse.ArgumentParser()
 parser.add_argument("-c","--cascade,required=True,
                     help"path to where the face cascade)
 parser.add_argument("-e","--encodings,required=True,
                     help"path to sterialized dbof facial encodings")
-                    args=vars(parser.parse_args())
-             
+ap.add_argument("-p", "--shape-predictor", required=True,help="path to facial landmark predictor")                   
+                    
+                    
+args=vars(parser.parse_args())                 
+# load OpenCV's Haar cascade for face detection    
+# facial landmark predictor         
 detector.cv2.classifier(args["cascade"])
+predictor = dlib.shape_predictor(args["shape_predictor"])
+(lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
+(rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]
 data=pickle.load(open(args["encodings"],"rb").read())
 #intitialize the video stream
 print("strting the video stream")
