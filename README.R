@@ -1,4 +1,70 @@
+#une partie de projet "prédiction d 'une maladie cardiovasculaire"
+data <- read.csv(url("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"), header = FALSE)
+colnames(data)<-c("age","sex","cp","trest","chol","fbs","reseg","thalec","exang","oldpeak","slop","ca","thal","target")
+#pretraitement de la colonne target 
+data$target[data$target==2]<-1
+data$target[data$target==3]<-1
+data$target[data$target==4]<-1
+#valaeur manquante
+data<-data[-88,]
+valeurmanquanteca<-which(data$ca %in% "?")
+valeurmanquantethal<-which(data$thal %in% "?")
+valeur<-c(valeurmanquanteca,valeurmanquantethal)
+data<-data[-valeur,]
+#verification de type de variable
+str(data)
+#modification de type de variable
+#variable qualitatife =factor
+data$sex<-as.factor(data$sex)
+data$cp<-as.factor(data$cp)
+data$fbs<-as.factor(data$fbs)
+data$reseg<-as.factor(data$reseg)
+data$exang<-as.factor(data$exang)
+data$slop<-as.factor(data$slop)
+data$ca<-as.factor(data$ca)
+#variable quantitavie
+data$age<-as.integer(data$age)
+data$trest<-as.integer(data$trest)
+data$chol<-as.integer(data$chol)
+data$thalec<-as.integer(data$thalec)
+str(data)
 
+
+
+  # Recodage des variables
+levels(data$sex) <- c("Femme", "Homme")
+levels(data$cp) <- c("Angine stable", "Angine instable", "Autres douleurs", "Asymptomatique")
+levels(data$fbs) <- c("Non", "Oui")
+levels(data$reseg) <- c("Normal", "Anomalies", "Hypertrophie")
+levels(data$exang) <- c("Non", "Oui")
+levels(data$slop) <- c("En hausse", "Stable", "En baisse")
+levels(data$ca) <- c("Absence d'anomalie", "Faible", "Moyen", "Eleve")
+levels(data$thal) <- c("Non", "Thalassemie sous controle", "Thalassemie instable")
+levels(data$target) <- c("Non", "Oui")
+#------------
+#variable qualitative :calcul les effectif
+table(data$sex)#effectif
+round(prop.table(table(data$sex)),4)*100#frequence en pourcentages
+table(data$fbs)
+round(prop.table(table(data$fbs)), 4)*100
+
+# Variable restecg
+table(data$restecg)
+round(prop.table(table(data$restecg)), 4)*100
+
+# Variable exang
+table(data$exang)
+round(prop.table(table(data$exang)), 4)*100
+
+# Variable slope
+table(data$slope)
+round(prop.table(table(data$slope)), 4)*100
+
+# Variable ca
+table(data$ca)
+round(prop.table(table(data$ca)), 4)*100
+
+# Variable thal
 table(data$thal)
 round(prop.table(table(data$thal)), 4)*100
 
