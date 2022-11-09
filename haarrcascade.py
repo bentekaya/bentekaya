@@ -104,9 +104,9 @@ while True:
            name=max(counts,key=counts.get)
       names.append(name)
       if name=="unknown":
-            firebase.put('mqtt-raspberry','light',unknown)
+            firebase.put('mqtt-raspberry','face detection',unknown)
       else:
-         firebase.put('mqtt-raspberry','light',names)    
+         firebase.put('mqtt-raspberry','face detection',names)    
       #loop over the recognized face
     for ((top,right,bottom,left),name) in zip(boxes,names):
        #draw the predicted face name on the image
