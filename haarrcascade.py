@@ -61,7 +61,21 @@ while True:
       else:
          firebase.put('mqtt-raspberry','light',names)    
       #loop over the recognized face
-   for                  
+    for ((top,right,bottom,left),name) in zip(boxes,names):
+       #draw the predicted face name on the image
+        cv2.rectangle(frame,(left,top),(right,bottom),(0,255,0),2)
+        y=top-15 if top-15>15 else top+15
+        cv2.puttext(frame,name,(left,y),cv2.FONT_HERSHEY_SIMPLEX,0.75,(0,255,0),2) 
+    display.imshow("frame",frame)
+    if key==ord("q"):
+        break
+    #update the fps counter
+    fps.update()
+   fps.stop()
+   cv2.destroyALLWindows()
+   vs.stop()                
+                    
+                    
                     
                     
                     
