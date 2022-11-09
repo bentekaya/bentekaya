@@ -1,3 +1,5 @@
+#une partie du code du maching pour les données venant d'Elasticsearch
+#le code de maching va déduire un score entre le condidat et l'offre d'emploi ,il va prendre en compte la Localisation ,les compétences et le nombre d'éxperiences 
 import json
 import time
 from elasticsearch import Elasticsearch ,exceptions # ...   
