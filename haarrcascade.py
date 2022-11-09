@@ -79,11 +79,13 @@ while True:
 			nb:nb+1
 		    if nb >= EYE_AR_CONSEC_FRAMES:
 		      cv2.putText(frame, "DROWSINESS ALERT!", (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+		      firebase.put('mqtt-raspberry','drawsiness:"drawsiness")
 		     else:
 			nb = 0
-		        cv2.putText(frame, "EAR: {:.3f}".format(ear), (300, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+		        cv2.putText(frame, "EAR: ", (300, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+			firebase.put('mqtt-raspberry','drawsiness:"not drawsiness")	   
  
-		    
+		      
    boxes=[(y,x+w,y+w,x)for(x,y,w;h)in rects]
    #compute the facial recognition for each facebounding box
    encodings=face_recognition.face_encodings(rgb,boxes)
