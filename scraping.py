@@ -1,3 +1,21 @@
+
+
+import json 
+import os
+# selenium (scrapping module)
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.webdriver.remote.webdriver import WebElement
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+# beautifulSoup (pulling data out of HTML)
+from bs4 import BeautifulSoup
+from datetime import datetime
 def save_profile(browser2: webdriver, wait: WebDriverWait, profileElement: WebElement, profiles_link: str, profilesData: list) :
       # initialisation
       skills_profile=[]
