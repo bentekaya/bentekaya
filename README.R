@@ -1,4 +1,5 @@
 #une partie de projet "prédiction d 'une maladie cardiovasculaire"
+#Analyse statistique
 data <- read.csv(url("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"), header = FALSE)
 colnames(data)<-c("age","sex","cp","trest","chol","fbs","reseg","thalec","exang","oldpeak","slop","ca","thal","target")
 #pretraitement de la colonne target 
