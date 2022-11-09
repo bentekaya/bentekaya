@@ -62,14 +62,19 @@ while True:
 		# array
 		shape = predictor(gray, rect)
 		shape = face_utils.shape_to_np(shape)  
-     # extract the left and right eye coordinates, then use the
+                # extract the left and right eye coordinates, then use the
 		# coordinates to compute the eye aspect ratio for both eyes
 		leftEye = shape[lStart:lEnd]
 		rightEye = shape[rStart:rEnd]
 		leftEAR = eye_aspect_ratio(leftEye)
 		rightEAR = eye_aspect_ratio(rightEye)
 		# average the eye aspect ratio together for both eyes
-		ear = (leftEAR + rightEAR) / 2.0               
+		ear = (leftEAR + rightEAR) / 2.0   
+		# visualize each of the eyes
+		leftEyeHull = cv2.convexHull(leftEye)
+		rightEyeHull = cv2.convexHull(rightEye)
+		cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
+		cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1)   
    boxes=[(y,x+w,y+w,x)for(x,y,w;h)in rects]
    #compute the facial recognition for each facebounding box
    encodings=face_recognition.face_encodings(rgb,boxes)
