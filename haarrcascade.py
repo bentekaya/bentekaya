@@ -50,6 +50,26 @@ while True:
    gray=cv2.cvtcolor(frame,cv2.COLOR_ BGR2RGB)     
    #detect faces in the gray scale frame
    rects=detector.detectMultiscale(gray,scaleFactor=1.1,minsize=(30,30))
+   # loop over the face detections
+	 for (x, y, w, h) in rects:
+		# construct a dlib rectangle object from the Haar cascade
+		# bounding box
+		 rect = dlib.rectangle(int(x), int(y), int(x + w),
+			int(y + h))
+                    
+		# determine the facial landmarks for the face region, then
+		# convert the facial landmark (x, y)-coordinates to a NumPy
+		# array
+		shape = predictor(gray, rect)
+		shape = face_utils.shape_to_np(shape)  
+     # extract the left and right eye coordinates, then use the
+		# coordinates to compute the eye aspect ratio for both eyes
+		leftEye = shape[lStart:lEnd]
+		rightEye = shape[rStart:rEnd]
+		leftEAR = eye_aspect_ratio(leftEye)
+		rightEAR = eye_aspect_ratio(rightEye)
+		# average the eye aspect ratio together for both eyes
+		ear = (leftEAR + rightEAR) / 2.0               
    boxes=[(y,x+w,y+w,x)for(x,y,w;h)in rects]
    #compute the facial recognition for each facebounding box
    encodings=face_recognition.face_encodings(rgb,boxes)
