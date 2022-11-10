@@ -19,6 +19,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
                    
 data.head()
+data.insull().sum()
 #corrélation entre les données
 correlation = data.corr()
 plt.figure(figsize=(11,11))
@@ -47,30 +48,18 @@ model = LinearRegression()
 #on cherche la droite mieux ajusté qui passe par tous les points y=ax1+bx2+cx3+a0
 model.fit(X_train, Y_train)
 
-02
-03
-04
-05
-06
-07
-08
-09
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
 # Evaluation du training set
 
 y_train_predict = model.predict(X_train)
-rmse = (np.sqrt(mean_squared_error(Y_train, y_train_predict)))
+bias = (np.sqrt(mean_squared_error(Y_train, y_train_predict)))
 score = r2_score(Y_train, y_train_predict)
 print("score",score)
+# model evaluation for testing set
+y_test_predict = lmodellineaire.predict(X_test)
+var = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
+r2 = r2_score(Y_test, y_test_predict)
+print("score1",r2)
+#Data visualisation
+plt.scatter                   
                    
+                    
