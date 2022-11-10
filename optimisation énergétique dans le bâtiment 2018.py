@@ -60,6 +60,10 @@ var = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
 r2 = r2_score(Y_test, y_test_predict)
 print("score1",r2)
 #Data visualisation
-plt.scatter                   
+plt.scatter(Y_test, y_test_predict)
+plt.xlabel("actuel charges")
+plt.ylabel("predicted charges")
+plt.show()
+                   
                    
                     
