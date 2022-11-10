@@ -13,6 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import Normalizer
+from sklearn.model_selection import train_test_split        
                    
 data.head()
 #corrélation entre les données
@@ -26,5 +27,12 @@ x_vars=[ 'Surface des murs','Orientation', 'Surface de vitrage'])
 plt.show()
 #prédiction de la charge de refroidissement et de chauffement par la méthade de régression linéaire
 #standarisation 
-                   
+
+st = Normalizer(copy=False)
+
+X = data.drop(['Charge de chauffage', 'Charge de refroidissement'], axis=1)
+X = st.fit_transform(X)
+y = data[['Charge de chauffage', 'Charge de refroidissement']  
+#on prend 70% de données pour le jeu d'entrainement et 30 % pour le test        
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 123)
                    
