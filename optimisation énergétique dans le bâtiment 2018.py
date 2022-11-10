@@ -5,7 +5,7 @@
 #X3 :Surface des murs
 #tous les variables x,y sont des variables quantitatives
 #importer les données nécesaire
-data = pd.read_csv(rania.csv')
+
 
 import pandas as pd
 import pandas_profiling
@@ -18,6 +18,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
                    
+data = pd.read_csv(rania.csv')
 data.head()
 data.insull().sum()
 #corrélation entre les données
