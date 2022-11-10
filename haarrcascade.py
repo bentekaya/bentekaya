@@ -1,4 +1,4 @@
-#xette application permet de détecter le visage et la vigilance d'un conducteur via IA et IOT
+#cette application permet de détecter le visage et la vigilance d'un conducteur via IA et IOT
 #par la méthode haarcascade
 from imutils.video import videoStream
 from imutils.video import FPS
