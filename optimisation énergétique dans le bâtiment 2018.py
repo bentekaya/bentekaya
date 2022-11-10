@@ -4,7 +4,7 @@
 #x2:Surface de vitrage
 #X3 :Surface des murs
 #tous les variables x,y sont des variables quantitatives
-#importer les données nécesaite
+#importer les données nécesaire
 data = pd.read_csv(rania.csv')
 
 import pandas as pd
@@ -29,7 +29,7 @@ plt.figure(figsize=(5,5))
 sns.pairplot(data=data, y_vars=['Charge de chauffage']
 x_vars=[ 'Surface des murs','Orientation', 'Surface de vitrage'])
 plt.show()
-#prédiction de la charge de refroidissement et de chauffement par la méthade de régression linéaire
+#prédiction de la charge  de chauffage par la méthade de régression linéaire
 #standarisation 
 
 st = Normalizer(copy=False)
@@ -45,7 +45,7 @@ print("ytrain",Y_train.shape)
 print("ytest",Y_test.shape)
 #entrainement du modéle
 model = LinearRegression()
-#on cherche la droite mieux ajusté qui passe par tous les points y=ax1+bx2+cx3+a0
+#on cherche la droite mieux ajusté qui passe par tous les points y=ax1+bx2+cx3+a0 par la méthode gradient descent
 model.fit(X_train, Y_train)
 
 # Evaluation du training set
