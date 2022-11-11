@@ -56,7 +56,7 @@ bias = (np.sqrt(mean_squared_error(Y_train, y_train_predict)))
 score = r2_score(Y_train, y_train_predict)
 print("score",score)
 # model evaluation for testing set
-y_test_predict = lmodellineaire.predict(X_test)
+y_test_predict = model.predict(X_test)
 var = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
 r2 = r2_score(Y_test, y_test_predict)
 print("score1",r2)
