@@ -1,6 +1,7 @@
 #une partie de projet "prédiction d 'une maladie cardiovasculaire"
 #Analyse statistique
 data <- read.csv(url("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"), header = FALSE)
+#output y=Target (variable qualitatives)
 colnames(data)<-c("age","sex","cp","trest","chol","fbs","reseg","thalec","exang","oldpeak","slop","ca","thal","target")
 #pretraitement de la colonne target 
 data$target[data$target==2]<-1
@@ -43,7 +44,7 @@ levels(data$ca) <- c("Absence d'anomalie", "Faible", "Moyen", "Eleve")
 levels(data$thal) <- c("Non", "Thalassemie sous controle", "Thalassemie instable")
 levels(data$target) <- c("Non", "Oui")
 #------------
-#variable qualitative :calcul les effectif
+#variable qualitative :calcul les effectifs
 table(data$sex)#effectif
 round(prop.table(table(data$sex)),4)*100#frequence en pourcentages
 table(data$fbs)
@@ -130,7 +131,7 @@ col = "blue",
 
 cex.main = 1.4,
 cex.lab = 1.2)
-     #garph mids pour connaitre ou on mettre les données
+     #garph mids pour connaitre ou on mets les données
 text(x = graph3$mids, graph3$counts, labels = graph3$counts, adj = c(0.5, -0.5))
 #croisé
 graph4<-barplot(table(data$target,data$sex),beside=TRUE,
