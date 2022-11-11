@@ -108,7 +108,7 @@ graph1<-plot(data$sex,xlab="sex",
      cex.axis=1,
      ylim=c(0,250))
 text(x = graph1, y = table(data$sex)+15, labels = as.character(table(data$sex)), cex = 1.1)
-#diagramme curculaire
+#diagramme circulaire
 pie(table(data$exang),main="rep",clockwise=TRUE)
 #boite à moustache pour variable quantitative
 #varaiable age
