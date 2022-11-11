@@ -46,7 +46,7 @@ print("ytrain",Y_train.shape)
 print("ytest",Y_test.shape)
 #entrainement du modéle
 model = LinearRegression()
-#on cherche la droite mieux ajusté qui passe par tous les points y=ax1+bx2+cx3+a0 par la méthode gradient descent
+#on cherche la droite mieux ajusté qui passe par tous les points y=ax1+bx2+cx3+a0 par la méthode gradient descent(permet de minimiser la fonction cost Function)
 model.fit(X_train, Y_train)
 
 # Evaluation du training set
