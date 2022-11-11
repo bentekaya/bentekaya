@@ -1,5 +1,5 @@
 #une partie du code de maching pour les données venant d'Elasticsearch(base de données No sql)
-#le code de maching va déduire un score entre le condidat et l'offre d'emploi ,il va prendre en compte la Localisation ,les compétences et le nombre d'éxperiences 
+#le code de maching va déduire un score entre le candidat et l'offre d'emploi ,il va prendre en compte la Localisation ,les compétences et le nombre d'éxperiences 
 import json
 import time
 from elasticsearch import Elasticsearch ,exceptions # ...   
