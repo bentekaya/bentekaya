@@ -1,4 +1,4 @@
-#une partie du code du maching pour les données venant d'Elasticsearch
+#une partie du code de maching pour les données venant d'Elasticsearch(base de données No sql)
 #le code de maching va déduire un score entre le condidat et l'offre d'emploi ,il va prendre en compte la Localisation ,les compétences et le nombre d'éxperiences 
 import json
 import time
@@ -9,6 +9,7 @@ from flask import Flask, jsonify, request,make_response, abort
 from flask_cors import CORS,cross_origin
 
 # Matching profiles by jobs
+#j'ai crée une WEB Service (API) qui permet d'effectuer la réquete HTTP POST
 @app.route('/api/v1/jobs/matching/<jobs_id>', methods=['POST'])
 def getoffreprofil(jobs_id):  
 
