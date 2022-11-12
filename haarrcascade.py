@@ -37,7 +37,7 @@ data=pickle.load(open(args["encodings"],"rb").read())
 print("strting the video stream")
 vs=videoStream(src=0).start()
 time.sleep(2.0)
-#Start the Fbs counter(:le nombre  d'image afiché par seconde)
+#Start the Fbs counter(:le nombre  d'image affiché par seconde)
 fps=FPS().start()
 #loop over frames from the video file stream
 while True:
