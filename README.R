@@ -16,7 +16,7 @@ data<-data[-valeur,]
 #verification de type de variable
 str(data)
 #modification de type de variable
-#variable qualitatife =factor
+#variable qualitative =factor
 data$sex<-as.factor(data$sex)
 data$cp<-as.factor(data$cp)
 data$fbs<-as.factor(data$fbs)
@@ -24,7 +24,7 @@ data$reseg<-as.factor(data$reseg)
 data$exang<-as.factor(data$exang)
 data$slop<-as.factor(data$slop)
 data$ca<-as.factor(data$ca)
-#variable quantitavie
+#variable quantitative
 data$age<-as.integer(data$age)
 data$trest<-as.integer(data$trest)
 data$chol<-as.integer(data$chol)
